@@ -11,7 +11,7 @@ def canUnlockAll(boxes):
     while queue:
         index = queue[0]
         for number in boxes[index]:
-            if number not in visited:
+            if number not in visited and number < len(boxes):
                 visited.append(number)
                 queue.append(number)
         queue.pop(0)
