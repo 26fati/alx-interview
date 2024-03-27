@@ -20,8 +20,8 @@ stats = {'200': 0,
 try:
     for line in stdin:
         line_parsed = line.split()[::-1]
-        status = line.split(' ')[7]
-        number = line.split(' ')[8]
+        status = line_parsed[1]
+        number = line_parsed[0]
         if len(line_parsed) > 2 and status.isdigit() and number.isdigit():
             count += 1
             size += int(number)
