@@ -29,8 +29,8 @@ try:
                 if status == key:
                     stats[key] = value + 1
             if count == 10:
-                print_line(stats, size)
+                print_lines(stats, size)
                 count = 0
 
 finally:
-    print_line(stats, size)
+    print_lines(stats, size)
