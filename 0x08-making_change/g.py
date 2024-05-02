@@ -24,13 +24,17 @@ def makeChange(coins, total):
     """
     if total <= 0:
         return 0
-    array = [float('inf')] * (total + 1)
+    array = [None] * (total + 1)
+    p = 1
     array[0] = 0
-    for p in range(1, total + 1):
+    while(p < len(array)):
+        min = float('inf')
         for i in range(len(coins)):
             if coins[i] <= p:
-                array[p] = min(1 + array[p - coins[i]], array[p])
-
+                if (1 + array[p - coins[i]]) < min:
+                    min = 1 + array[p - coins[i]]
+        array[p] = min
+        p += 1
     if math.isinf(array[-1]):
         return -1
     return array[-1]
