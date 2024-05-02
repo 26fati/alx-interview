@@ -13,7 +13,7 @@ def makeChange(coins, total):
 
     Args:
         coins (list): A list of coin denominations available.
-        total (int): The total amount for which change needs to be made.
+        total (int): The total i for which change needs to be made.
 
     Returns:
         int: The minimum number of coins needed
@@ -26,10 +26,9 @@ def makeChange(coins, total):
         return 0
     array = [float('inf')] * (total + 1)
     array[0] = 0
-    for p in range(1, total + 1):
-        for i in range(len(coins)):
-            if coins[i] <= p:
-                array[p] = min(1 + array[p - coins[i]], array[p])
+    for coin in coins:
+        for i in range(coin, total + 1):
+            array[i] = min(array[i], array[i - coin] + 1)
 
     if math.isinf(array[-1]):
         return -1
